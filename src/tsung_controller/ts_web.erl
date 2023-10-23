@@ -115,7 +115,7 @@ update_reports() ->
                     os:cmd(Cmd)
             end;
         File ->
-            Cmd ="cd "++ Path ++ "; "++ File ++ " --dygraph",
+            Cmd ="cd "++ Path ++ "; "++ File,
             os:cmd(Cmd)
     end.
 
@@ -150,17 +150,17 @@ status(SessionID, _Env, _Input) ->
     Title ="Tsung Status",
     {ok, Nodes, Ended_Beams, MaxPhases} = ts_config_server:status(),
     Active    = Nodes - Ended_Beams,
-    ActiveBeamsBar  = progress_bar(Active,Nodes,"", "Active nodes: "),
+    ActiveBeamsBar  = progress_bar(Active,Nodes,"", "活动节点: "),
     {Clients, ReqRate, Connected, Interval, Phase, Cpu} = ts_mon:status(),
     NPhase = case Phase of
                  error -> 1;
                  {ok,N} -> (N div Nodes) + 1
              end,
-    RequestsBar  = progress_bar(ReqRate/Interval, ReqRate/Interval,"req/sec", lists:flatten("Request rate: ")),
-    PhasesBar  = progress_bar(NPhase, MaxPhases,"", lists:flatten("Current phase (total is " ++ number_to_list(MaxPhases) ++" )")),
-    UsersBar  = progress_bar(Clients, Clients,"", "Running users"),
-    ConnectedBar  = progress_bar(Connected, Clients,"", "Connected users"),
-    CPUBar  = progress_bar(Cpu, 100,"", "Controller CPU usage", true),
+    RequestsBar  = progress_bar(ReqRate/Interval, ReqRate/Interval,"req/sec", lists:flatten("请求速率: ")),
+    PhasesBar  = progress_bar(NPhase, MaxPhases,"", lists:flatten("当前阶段 (总共: " ++ number_to_list(MaxPhases) ++" )")),
+    UsersBar  = progress_bar(Clients, Clients,"", "运行线程数"),
+    ConnectedBar  = progress_bar(Connected, Clients,"", "已连接线程数"),
+    CPUBar  = progress_bar(Cpu, 100,"", "控制机CPU使用率", true),
     mod_esi:deliver(SessionID, [
                                 "Content-Type: text/html\r\n\r\n",
                                 head(Title)
@@ -168,7 +168,7 @@ status(SessionID, _Env, _Input) ->
                                 ++ nav()
                                 ++ sidebar()
                                 ++ " <div class=\"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main\">"
-                                ++ "<h1 class=\"page-header\">Status</h1>"
+                                ++ "<h1 class=\"page-header\">状态</h1>"
 
                                 ++ UsersBar
                                 ++ ConnectedBar
@@ -276,11 +276,11 @@ nav() ->
         </div>
         <div class=\"navbar-collapse collapse\">
           <ul class=\"nav navbar-nav navbar-right\">
-            <li><a href=\"/es/ts_web:status\">Status</a></li>
-            <li><a href=\"/es/ts_web:report\">Reports</a></li>
-            <li><a href=\"/es/ts_web:graph\">Graphs</a></li>
-            <li><a href=\"/es/ts_web:logs\">Logs</a></li>
-            <li><a href=\"/es/ts_web:stop\">Stop</a></li>
+            <li><a href=\"/es/ts_web:status\">状态</a></li>
+            <li><a href=\"/es/ts_web:report\">报告</a></li>
+            <li><a href=\"/es/ts_web:graph\">图形报告</a></li>
+            <li><a href=\"/es/ts_web:logs\">日志</a></li>
+            <li><a href=\"/es/ts_web:stop\">停止测试</a></li>
           </ul>
         </div>
       </div>

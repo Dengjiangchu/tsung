@@ -1,29 +1,25 @@
 [% INCLUDE header.thtml %]
 
 <div id="response_time">
-<h3>Response Time</h3>
+<h3>响应时间</h3>
 <table>
-<tr><th>Transactions and Pages</th><th>Requests and connection establishment</th></tr>
+<tr><th>事务和页面</th><th>请求和建立连接</th></tr>
 <tr>
  <td>
- <a href="images/graphes-Transactions-mean.[% ext %]">
-  <img class="graph" src="images/graphes-Transactions-mean_tn.png" alt="transaction response time"/>
+ <a href="/images/graphes-Transactions-mean.[% ext %]">
+  <img class="graph" src="/images/graphes-Transactions-mean_tn.png" alt="transaction response time"/>
 </a>
 <br/>
-<p class="collapse alert-info" id="detailrequest"> Response time in
-msec for pages and transactions (a page
-is a group of requests not separated by a thinktime).</p>
+<p class="collapse alert-info" id="detailrequest"> 以毫秒为单位的响应时间是指完成页面或事务所需的时间（页面（page）是一组连续的请求，没有中间的思考时间）。</p>
 <a class="btn btn-info" data-toggle="collapse" data-target="#detailrequest"> <i class="icon-ok icon-white"></i>Info &raquo;</a>
  </td>
  <td>
-  <a href="images/graphes-Perfs-mean.[% ext %]">
-   <img class="graph" src="images/graphes-Perfs-mean_tn.png" alt="mean request response time"/>
+  <a href="/images/graphes-Perfs-mean.[% ext %]">
+   <img class="graph" src="/images/graphes-Perfs-mean_tn.png" alt="mean request response time"/>
   </a>
 <br/>
 <dl class="collapse alert-info" id="detailconnection">
-<dt>connect</dt> <dd>Mean duration (in msec) of the connection
-establishment only.</dd><dt>request</dt> <dd>Mean duration of
-requests (in msec).</dd></dl>
+<dt>connect</dt> <dd>连接建立的平均持续时间（以毫秒为单位）。</dd><dt>request</dt> <dd>请求的平均持续时间（以毫秒为单位）</dd></dl>
 <a class="btn btn-info" data-toggle="collapse" data-target="#detailconnection"> <i class="icon-ok icon-white"></i>Info &raquo;</a>
  </td>
  </tr>
@@ -31,20 +27,20 @@ requests (in msec).</dd></dl>
 </div>
 
 <div id="throughput">
-<h3>Throughput</h3> 
+<h3>吞吐量</h3> 
 
 <table>
-<tr><th>Transactions</th><th>Requests</th>
+<tr><th>事务</th><th>请求</th>
 </tr>
 <tr>
  <td>
- <a href="images/graphes-Transactions-rate.[% ext %]">
-  <img class="graph" src="images/graphes-Transactions-rate_tn.png" alt="transaction rate"/> 
+ <a href="/images/graphes-Transactions-rate.[% ext %]">
+  <img class="graph" src="/images/graphes-Transactions-rate_tn.png" alt="transaction rate"/> 
  </a>
  </td>
  <td>
-  <a href="images/graphes-Perfs-rate.[% ext %]">
-   <img class="graph" src="images/graphes-Perfs-rate_tn.png" alt="req/sec"/>
+  <a href="/images/graphes-Perfs-rate.[% ext %]">
+   <img class="graph" src="/images/graphes-Perfs-rate_tn.png" alt="req/sec"/>
   </a>
  </td>
  </tr>
@@ -55,29 +51,29 @@ requests (in msec).</dd></dl>
 </tr>
 <tr>
  <td>
-  <a href="images/graphes-Async-rate.[% ext %]">
-   <img class="graph" src="images/graphes-Async-rate_tn.png" alt="req/sec"/>
+  <a href="/images/graphes-Async-rate.[% ext %]">
+   <img class="graph" src="/images/graphes-Async-rate_tn.png" alt="req/sec"/>
   </a>
  </td>
 [% IF bosh %]
  <td>
-  <a href="images/graphes-Bosh-rate.ps">
-   <img class="graph" src="images/graphes-Bosh-rate.png" alt="req/sec"/>
+  <a href="/images/graphes-Bosh-rate.ps">
+   <img class="graph" src="/images/graphes-Bosh-rate.png" alt="req/sec"/>
   </a>
  </td>
 [% END %]
  </tr>
 [% END %]
-<tr><th>Network traffic</th><th>New Users</th></tr>
+<tr><th>网络流量</th><th>新用户</th></tr>
 <tr>
  <td>
- <a href="images/graphes-Size-rate.[% ext %]">
-  <img class="graph" src="images/graphes-Size-rate_tn.png" alt="Kb/sec"/>
+ <a href="/images/graphes-Size-rate.[% ext %]">
+  <img class="graph" src="/images/graphes-Size-rate_tn.png" alt="Kb/sec"/>
  </a>
  </td>
  <td>
-  <a href="images/graphes-Users_Arrival-rate.[% ext %]">
-   <img class="graph" src="images/graphes-Users_Arrival-rate_tn.png" alt="visit/sec"/>
+  <a href="/images/graphes-Users_Arrival-rate.[% ext %]">
+   <img class="graph" src="/images/graphes-Users_Arrival-rate_tn.png" alt="visit/sec"/>
   </a>
  </td>
  </tr>
@@ -85,26 +81,26 @@ requests (in msec).</dd></dl>
 </div>
 
 <div id="users">
-<h3>Simultaneous Users</h3>
+<h3>并发用户</h3>
 <table>
-<tr><th>Simultaneous Users</th>
+<tr><th>并发用户</th>
 [% IF match %]
     <th>Matching responses</th>
 [% END %]
 </tr>
 <tr>
- <td> <a href="images/graphes-Users-simultaneous.[% ext %]">
-  <img class="graph" src="images/graphes-Users-simultaneous_tn.png"
+ <td> <a href="/images/graphes-Users-simultaneous.[% ext %]">
+  <img class="graph" src="/images/graphes-Users-simultaneous_tn.png"
   alt="Users"/>
  </a>
 <br/>
-<dl class="collapse alert-info" id="detailsimul"><dt>users</dt><dd> Number of simultaneous users (it's session has started, but not yet finished).</dd>
-<dt>connected</dt> <dd>number of users with an opened TCP/UDP connection (example: for HTTP, during a think time, the TCP connection can be closed by the server, and it won't be reopened until the thinktime has expired)</dd></dl>
+<dl class="collapse alert-info" id="detailsimul"><dt>users</dt><dd> 同时在线用户数量（其会话已开始但尚未结束）</dd>
+<dt>connected</dt> <dd>具有打开的TCP/UDP连接的用户数量（例如：对于HTTP，在思考时间期间，TCP连接可以被服务器关闭，并且直到思考时间过期之前不会重新打开）</dd></dl>
 <a class="btn btn-info" data-toggle="collapse" data-target="#detailsimul"> <i class="icon-ok icon-white"></i>Info &raquo;</a>
  </td>
 [% IF match %]
- <td> <a href="images/graphes-Match-rate.[% ext %]">
-  <img class="graph" src="images/graphes-Match-rate_tn.png" alt="Match"/>
+ <td> <a href="/images/graphes-Match-rate.[% ext %]">
+  <img class="graph" src="/images/graphes-Match-rate_tn.png" alt="Match"/>
  </a>
  </td>
 [% END %]
@@ -114,27 +110,27 @@ requests (in msec).</dd></dl>
 
 [% IF os_mon %]
 <div id="os_mon">
-<h3>Server OS monitoring</h3> 
+<h3>服务器系统监控</h3> 
 <table>
-<tr><th>CPU%</th><th>Free Memory</th></tr>
+<tr><th>CPU%</th><th>可用内存</th></tr>
 <tr>
  <td>
- <a href="images/graphes-cpu-mean.[% ext %]">
-  <img class="graph" src="images/graphes-cpu-mean_tn.png" alt="cpu"/>
+ <a href="/images/graphes-cpu-mean.[% ext %]">
+  <img class="graph" src="/images/graphes-cpu-mean_tn.png" alt="cpu"/>
  </a>
  </td>
  <td>
-  <a href="images/graphes-freemem-mean.[% ext %]">
-   <img class="graph" src="images/graphes-freemem-mean_tn.png" alt="free memory"/>
+  <a href="/images/graphes-freemem-mean.[% ext %]">
+   <img class="graph" src="/images/graphes-freemem-mean_tn.png" alt="free memory"/>
   </a>
  </td>
  </tr>
 
-<tr><th>CPU Load</th></tr>
+<tr><th>CPU负载</th></tr>
 <tr>
  <td>
- <a href="images/graphes-load-mean.[% ext %]">
-  <img class="graph" src="images/graphes-load-mean_tn.png" alt="load"/>
+ <a href="/images/graphes-load-mean.[% ext %]">
+  <img class="graph" src="/images/graphes-load-mean_tn.png" alt="load"/>
  </a>
  </td>
  </tr>
@@ -153,8 +149,8 @@ requests (in msec).</dd></dl>
           [% FOREACH key = row %]
            <td>
             [% IF key %]
-              <a href="images/graphes-$key-mean.[% ext %]">
-              <img class="graph" src="images/graphes-$key-mean_tn.png" alt="other"/>
+              <a href="/images/graphes-$key-mean.[% ext %]">
+              <img class="graph" src="/images/graphes-$key-mean_tn.png" alt="other"/>
                </a>
             [% END %]
            </td>
@@ -169,9 +165,9 @@ requests (in msec).</dd></dl>
 
 [% IF http %]
 <div id="http_status">
-<h3>HTTP return code Status (rate)</h3> 
- <a href="images/graphes-HTTP_CODE-rate.[% ext %]">
-  <img class="graph" src="images/graphes-HTTP_CODE-rate_tn.png" alt="HTTP_CODE-rate"/> 
+<h3>HTTP返回码状态（比率）</h3> 
+ <a href="/images/graphes-HTTP_CODE-rate.[% ext %]">
+  <img class="graph" src="/images/graphes-HTTP_CODE-rate_tn.png" alt="HTTP_CODE-rate"/> 
  </a>
 </div>
 [% END %]
@@ -179,8 +175,8 @@ requests (in msec).</dd></dl>
 [% IF errors %]
 <div id="errors">
 <h3>Errors (rate)</h3> 
- <a href="images/graphes-Errors-rate.[% ext %]">
-  <img class="graph" src="images/graphes-Errors-rate_tn.png" alt="Errors-rate"/> 
+ <a href="/images/graphes-Errors-rate.[% ext %]">
+  <img class="graph" src="/images/graphes-Errors-rate_tn.png" alt="Errors-rate"/> 
  </a>
 </div>
 [% END %]
